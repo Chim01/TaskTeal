@@ -1,0 +1,48 @@
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 30
+        spacing: 20
+
+        Label:
+            text: "🎯 TaskTeal"
+            font_name: 'assets/fonts/seguiemj.ttf'
+            font_size: str(root.font_size * 1.5) + 'sp'
+            bold: True
+            halign: 'center'
+            size_hint_y: None
+            height: 60
+
+        Label:
+            text: root.progress_summary
+            font_name: 'assets/fonts/seguiemj.ttf'
+            font_size: str(root.font_size) + 'sp'
+            halign: 'center'
+            size_hint_y: None
+            height: 50
+
+        CustomButton:
+            text: '📋 Projects'
+            font_size: str(root.font_size) + 'sp'
+            size_hint_y: None
+            height: 45
+            size_hint_x: 1
+            on_press: app.root.current = 'project'; app.root.transition.direction = 'left'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 15
+            size_hint_y: None
+            height: 45
+
+            CustomButton:
+                text: '⚙️ Settings'
+                font_size: str(root.font_size) + 'sp'
+                size_hint_x: 0.5
+                on_press: app.root.current = 'settings'; app.root.transition.direction = 'left'
+
+            CustomButton:
+                text: '📊 Stats'
+                font_size: str(root.font_size) + 'sp'
+                size_hint_x: 0.5
+                on_press: app.root.current = 'stats'; app.root.transition.direction = 'left'

@@ -1,0 +1,30 @@
+<StatsScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 30
+        spacing: 40
+
+        Label:
+            text: '📊 Statistics Dashboard'
+            font_name: 'assets/fonts/seguiemj.ttf'
+            font_size: str(root.font_size * 1.5) + 'sp'
+            bold: True
+            halign: 'center'
+            size_hint_y: None
+            height: 60
+
+        Label:
+            text: root.stats_summary
+            font_name: 'assets/fonts/seguiemj.ttf'
+            font_size: str(root.font_size) + 'sp'
+            halign: 'left'
+            size_hint_y: None
+            height: 350
+
+        CustomButton:
+            text: '🏠 Home'
+            font_size: str(root.font_size) + 'sp'
+            size_hint_y: None
+            height: 45
+            size_hint_x: 1
+            on_press: app.root.current = 'home'; app.root.transition.direction = 'right'

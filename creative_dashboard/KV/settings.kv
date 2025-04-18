@@ -1,0 +1,121 @@
+<SettingsScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 15
+
+        Label:
+            text: '⚙️ Settings'
+            font_name: 'assets/fonts/seguiemj.ttf'
+            font_size: str(root.font_size * 1.5) + 'sp'
+            bold: True
+            halign: 'center'
+            size_hint_y: None
+            height: 60
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+
+            Label:
+                text: '🌗 Theme:'
+                font_name: 'assets/fonts/seguiemj.ttf'
+                font_size: str(root.font_size) + 'sp'
+                bold: True
+                size_hint_x: 0.4
+
+            Spinner:
+                text: root.theme
+                values: ['System Default', 'Light', 'Dark']
+                font_name: 'assets/fonts/seguiemj.ttf'
+                font_size: str(root.font_size) + 'sp'
+                size_hint_x: 0.6
+                on_text: root.set_theme(self.text)
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+
+            Label:
+                text: '🔔 Notifications:'
+                font_name: 'assets/fonts/seguiemj.ttf'
+                font_size: str(root.font_size) + 'sp'
+                bold: True
+                size_hint_x: 0.4
+
+            CheckBox:
+                active: root.notifications
+                size_hint_x: 0.6
+                on_active: root.notifications = self.active; root.save_settings()
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+
+            Label:
+                text: '🔤 Font Size:'
+                font_name: 'assets/fonts/seguiemj.ttf'
+                font_size: str(root.font_size) + 'sp'
+                bold: True
+                size_hint_x: 0.4
+
+            Spinner:
+                text: root.font_scale
+                values: ['Small', 'Medium', 'Large', 'ExtraLarge']
+                font_name: 'assets/fonts/seguiemj.ttf'
+                font_size: str(root.font_size) + 'sp'
+                size_hint_x: 0.6
+                on_text: root.set_font_scale(self.text)
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: 100
+            spacing: 10
+
+            Label:
+                text: '💾 Export Data'
+                font_name: 'assets/fonts/seguiemj.ttf'
+                font_size: str(root.font_size) + 'sp'
+                bold: True
+                size_hint_y: None
+                height: 20
+
+            CustomButton:
+                text: 'Export'
+                font_size: str(root.font_size) + 'sp'
+                size_hint_x: 0.5
+                pos_hint: {'center_x': 0.5}
+                on_press: root.show_export_chooser()
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: 100
+            spacing: 10
+
+            Label:
+                text: '📥 Import Data'
+                font_name: 'assets/fonts/seguiemj.ttf'
+                font_size: str(root.font_size) + 'sp'
+                bold: True
+                size_hint_y: None
+                height: 20
+
+            CustomButton:
+                text: 'Import'
+                font_size: str(root.font_size) + 'sp'
+                size_hint_x: 0.5
+                pos_hint: {'center_x': 0.5}
+                on_press: root.show_import_chooser()
+
+        CustomButton:
+            text: '🏠 Home'
+            font_size: str(root.font_size) + 'sp'
+            size_hint_y: None
+            height: 45
+            size_hint_x: 1
+            on_press: app.root.current = 'home'; app.root.transition.direction = 'right'

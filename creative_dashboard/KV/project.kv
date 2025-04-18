@@ -1,0 +1,240 @@
+<ProjectScreen>:
+    name: 'project'
+    project_input: project_input
+    project_list: project_list
+    due_date_input: due_date_input
+    search_input: search_input
+    recurrence_spinner: recurrence_spinner
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 15
+
+        Label:
+            text: '📋 Weekly Projects'
+            font_name: 'assets/fonts/seguiemj.ttf'
+            font_size: str(root.font_size * 1.5) + 'sp'
+            bold: True
+            halign: 'center'
+            size_hint_y: None
+            height: 60
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 15
+            size_hint_y: 0.5
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 15
+                size_hint_x: 0.5
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        text: '🆕 Name:'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        bold: True
+                        size_hint_x: 0.4
+
+                    CenteredTextInput:
+                        id: project_input
+                        hint_text: 'Enter project name'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        multiline: False
+                        size_hint_x: 0.6
+                        hint_text_color: [0.5, 0.5, 0.5, 1]
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        text: '🏷️ Category:'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        bold: True
+                        size_hint_x: 0.4
+
+                    Spinner:
+                        text: root.category
+                        values: ['General', 'Work', 'Personal', 'Hobby']
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        size_hint_x: 0.6
+                        on_text: root.set_category(self.text)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        text: '📅 Due Date:'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        bold: True
+                        size_hint_x: 0.4
+
+                    CenteredTextInput:
+                        id: due_date_input
+                        hint_text: 'YYYY-MM-DD'
+                        text: root.due_date
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        multiline: False
+                        size_hint_x: 0.6
+                        hint_text_color: [0.5, 0.5, 0.5, 1]
+                        on_text_validate: root.set_due_date(self.text)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        text: '🔄 Recurrence:'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        bold: True
+                        size_hint_x: 0.4
+
+                    Spinner:
+                        id: recurrence_spinner
+                        text: root.recurrence
+                        values: ['None', 'Daily', 'Weekly', 'Monthly']
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        size_hint_x: 0.6
+                        on_text: root.set_recurrence(self.text)
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 15
+                size_hint_x: 0.5
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        text: '🔍 Search:'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        bold: True
+                        size_hint_x: 0.4
+
+                    CenteredTextInput:
+                        id: search_input
+                        hint_text: 'Search projects'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        multiline: False
+                        size_hint_x: 0.6
+                        hint_text_color: [0.5, 0.5, 0.5, 1]
+                        on_text: root.set_search_text(self.text)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        text: '📈 Sort By:'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        bold: True
+                        size_hint_x: 0.4
+
+                    Spinner:
+                        text: root.sort_by
+                        values: ['Name', 'Date', 'Status']
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        size_hint_x: 0.6
+                        on_text: root.set_sort_by(self.text)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        text: '📋 Status:'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        bold: True
+                        size_hint_x: 0.4
+
+                    Spinner:
+                        text: root.filter_status
+                        values: ['All', 'Active', 'Completed']
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        size_hint_x: 0.6
+                        on_text: root.set_filter_status(self.text)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        text: '🔄 Recurrence:'
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        bold: True
+                        size_hint_x: 0.4
+
+                    Spinner:
+                        text: root.filter_recurrence
+                        values: ['All', 'Daily', 'Weekly', 'Monthly']
+                        font_name: 'assets/fonts/seguiemj.ttf'
+                        font_size: str(root.font_size) + 'sp'
+                        size_hint_x: 0.6
+                        on_text: root.set_filter_recurrence(self.text)
+
+        ScrollView:
+            size_hint_y: 0.5
+            do_scroll_x: False
+            GridLayout:
+                id: project_list
+                cols: 1
+                spacing: 15
+                size_hint_y: None
+                height: self.minimum_height
+                padding: [0, 10]
+                Label:
+                    color: 1, 1, 1, 1
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 45
+            spacing: 15
+
+            CustomButton:
+                text: '🆕 Add Project'
+                font_size: str(root.font_size) + 'sp'
+                size_hint_x: 0.33
+                on_press: root.add_project()
+
+            CustomButton:
+                text: '🔄 Reset Projects'
+                font_size: str(root.font_size) + 'sp'
+                size_hint_x: 0.33
+                on_press: root.reset_projects()
+
+            CustomButton:
+                text: '🏠 Home'
+                font_size: str(root.font_size) + 'sp'
+                size_hint_x: 0.33
+                on_press: app.root.current = 'home'; app.root.transition.direction = 'right'
